@@ -2,6 +2,7 @@ import { BrandLogo } from "@components/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useState } from "react";
+import WalletConnect from "../WalletConnect";
 //import WalletConnect from "../WalletConnect";
 import s from "./Header.module.scss";
 import { MenuItems } from "./MenuItems";
@@ -105,16 +106,16 @@ const Header: FC<Props> = ({ hideMenu }) => {
               </Link>
             </div> */}
           </div>
-          {/* 
-          <div className={`btn-primary ${s.walletbtn}`}>
+
+          {/* <div className={`btn-primary ${s.walletbtn}`}>
             <Link href="#">
               <a>Connect Wallet</a>
             </Link>
-          </div> 
+          </div> */}
 
           <div className={`btn-primary ${s.walletbtn}`}>
             <WalletConnect />
-          </div>*/}
+          </div>
 
           <div className="ml-md-3 ml-1">
             {/* <Image
