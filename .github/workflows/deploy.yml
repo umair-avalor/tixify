@@ -1,0 +1,69 @@
+name: CI
+on:
+  push:
+    branches: [main, development]
+  pull_request:
+    branches: [main, development]
+
+jobs:
+  # testing, building, linting for all branches
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Begin linting
+  #       uses: actions/checkout@v3
+  #       with:
+  #         fetch-depth: 0
+
+  #     - name: Use Node 14
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: 14
+
+  #     - name: Use cached node_modules
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: node_modules
+  #         key: nodeModules-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           nodeModules-
+
+  #     - name: Install dependencies
+  #       run: npm install
+  #     - name: Run ESLint
+  #       run: npm run lint
+
+  deploy:
+    runs-on: ubuntu-latest
+    #needs: lint
+
+    # if main or development branch go to steps
+    # if: github.ref == 'refs/heads/main' ||  github.ref == 'refs/heads/development'
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: amondnet/vercel-action@v20
+        id: now-deployment-staging
+        if: github.ref != 'refs/heads/main'
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: "avalor"
+          alias-domains: |
+            react-project-starter-{{BRANCH}}.vercel.app
+      - uses: amondnet/vercel-action@v20
+        id: now-deployment-production
+        if: github.ref == 'refs/heads/main'
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: "avalor"
+          vercel-args: "${{ github.ref == 'refs/heads/main' && '--prod' || '' }}"
+          alias-domains: |
+            react-project-starter.vercel.app
+
+    # will show a pretty commit message after push
+    # outputs:
+    #   preview-url: ${{ steps.vercel-deployment.outputs.preview-url }}
