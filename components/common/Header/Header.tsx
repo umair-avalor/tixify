@@ -24,7 +24,7 @@ const Header: FC<Props> = ({ hideMenu }) => {
   };
 
   return (
-    <div className={`${s.container} ${hideMenu ? s.hideMenu : ""}`}>
+    <div className={` ${s.container} ${hideMenu ? s.hideMenu : ""} boxed`}>
       <div className={s.menuWrapper}>
         <div
           className={`${s.hamburgerMenu} hamburger-menu ${
@@ -39,11 +39,12 @@ const Header: FC<Props> = ({ hideMenu }) => {
         <div className={s.logo}>
           <Link href="/">
             <a>
-              <Image
+              {/* <Image
                 src="/images/logo.svg"
                 alt="hidden whales logo"
                 layout="fill"
-              />
+              /> */}
+              TIXIFY
             </a>
           </Link>
         </div>

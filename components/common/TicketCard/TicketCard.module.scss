@@ -1,0 +1,33 @@
+@import "/styles/variables.scss";
+
+.container {
+  margin-top: 5rem;
+  // padding-top: 4rem;
+
+  .headingOne {
+    font-size: 30px;
+  }
+
+  .cardWrapper {
+    padding: 20px;
+    background-color: #212121;
+    border-radius: 10px;
+    margin-bottom: 23px;
+  }
+
+  .imgWrapper {
+    position: relative;
+    width: 100%;
+    height: 13vw;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+  }
+}

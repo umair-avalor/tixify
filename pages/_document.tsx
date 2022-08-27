@@ -19,16 +19,12 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="shortcut icon" href="/images/logo.svg" type="image/png" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=PT+Sans:wght@700&display=swap"
-            rel="stylesheet"
-          />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap"
             rel="stylesheet"
-          />
+          ></link>
           <link
             rel="stylesheet"
             href="	https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"

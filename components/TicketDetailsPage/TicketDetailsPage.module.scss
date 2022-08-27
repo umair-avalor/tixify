@@ -1,0 +1,37 @@
+@import "/styles/variables.scss";
+
+.container {
+  padding: 2rem;
+
+  margin-top: 10rem;
+  padding-top: 4rem;
+
+  @media screen and (max-width: $mobileResolution) {
+    padding: 3.5rem 1rem;
+  }
+
+  .ticketimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgWrapper {
+    width: 828px;
+    height: 400px;
+    position: relative;
+  }
+
+  .ticketDetailsCard {
+    margin-top: 3rem;
+    .topRow {
+      display: flex;
+      justify-content: space-between;
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

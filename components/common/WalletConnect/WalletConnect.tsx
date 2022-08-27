@@ -118,7 +118,8 @@ const WalletConnect: FC = () => {
   }, []);
 
   const metaMaskConnect = async () => {
-    if (isWalletConnected || isValidNetwork()) {
+    if (isWalletConnected && isValidNetwork()) {
+      console.log(auth);
       return;
     }
     // console.log("isWalletConnected", isWalletConnected);
