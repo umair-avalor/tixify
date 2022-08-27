@@ -1,6 +1,6 @@
 {
   "address": "0xcbfc7901716baedc74810536099c2b1177f960b0",
-  "rpc": "https://ropsten.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161",
+  "rpc": "https://rpc-mumbai.matic.today",
   "abi": [
     {
       "anonymous": false,
@@ -58,7 +58,12 @@
     {
       "inputs": [
         { "internalType": "string", "name": "name", "type": "string" },
-        { "internalType": "string", "name": "symbol", "type": "string" }
+        { "internalType": "string", "name": "symbol", "type": "string" },
+        { "internalType": "uint256", "name": "startTime", "type": "uint256" },
+        { "internalType": "uint256", "name": "endTime", "type": "uint256" },
+        { "internalType": "uint256", "name": "ticketfees", "type": "uint256" },
+        { "internalType": "uint256", "name": "maxTickets", "type": "uint256" },
+        { "internalType": "address", "name": "creator", "type": "address" }
       ],
       "name": "makeGenerator",
       "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
@@ -71,7 +76,12 @@
     {
       "inputs": [
         { "internalType": "string", "name": "name", "type": "string" },
-        { "internalType": "string", "name": "symbol", "type": "string" }
+        { "internalType": "string", "name": "symbol", "type": "string" },
+        { "internalType": "uint256", "name": "startTime", "type": "uint256" },
+        { "internalType": "uint256", "name": "endTime", "type": "uint256" },
+        { "internalType": "uint256", "name": "ticketfees", "type": "uint256" },
+        { "internalType": "uint256", "name": "maxTickets", "type": "uint256" },
+        { "internalType": "address", "name": "creator", "type": "address" }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
@@ -124,6 +134,25 @@
         }
       ],
       "name": "ApprovalForAll",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "startTime",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "endTime",
+          "type": "uint256"
+        }
+      ],
+      "name": "SaleTimeChanged",
       "type": "event"
     },
     {
@@ -189,6 +218,33 @@
       "type": "event"
     },
     {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "fees_",
+          "type": "uint256"
+        }
+      ],
+      "name": "feesChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "SALE_END_TIME",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "SALE_START_TIME",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         { "internalType": "address", "name": "to", "type": "address" },
         { "internalType": "uint256", "name": "tokenId", "type": "uint256" }
@@ -203,6 +259,32 @@
         { "internalType": "address", "name": "owner", "type": "address" }
       ],
       "name": "balanceOf",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "fees_", "type": "uint256" }
+      ],
+      "name": "changeFees",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        { "internalType": "uint256", "name": "st", "type": "uint256" },
+        { "internalType": "uint256", "name": "et", "type": "uint256" }
+      ],
+      "name": "changeSaleTime",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "fees",
       "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
       "stateMutability": "view",
       "type": "function"
@@ -261,6 +343,13 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "isSaleOn",
+      "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         { "internalType": "address", "name": "receiver", "type": "address" },
         { "internalType": "string", "name": "qr", "type": "string" },
@@ -268,13 +357,20 @@
       ],
       "name": "issueTicket",
       "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-      "stateMutability": "nonpayable",
+      "stateMutability": "payable",
       "type": "function"
     },
     {
       "inputs": [],
       "name": "name",
       "outputs": [{ "internalType": "string", "name": "", "type": "string" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "organiser",
+      "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
       "stateMutability": "view",
       "type": "function"
     },
@@ -321,6 +417,13 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "soldTickets",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [
         { "internalType": "bytes4", "name": "interfaceId", "type": "bytes4" }
       ],
@@ -348,6 +451,13 @@
     {
       "inputs": [],
       "name": "totalSupply",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalTickets",
       "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
       "stateMutability": "view",
       "type": "function"

@@ -1,7 +1,14 @@
 import contract from "./contract.json";
 import { ethers } from "ethers";
 
-export const deployGenerator = async (name: String, symbol: String) => {
+export const deployGenerator = async (
+  name: String,
+  symbol: String,
+  startTime: Number,
+  endTime: Number,
+  ticketfees: Number,
+  maxTickets: Number
+) => {
   const abi = contract.abi;
   const address = contract.address;
   if (window.ethereum) {
@@ -11,7 +18,15 @@ export const deployGenerator = async (name: String, symbol: String) => {
       const signer = provider.getSigner();
       const address2 = await signer.getAddress();
       const contractIns = new ethers.Contract(address, abi, signer);
-      const deploy = await contractIns.functions.makeGenerator(name, symbol);
+      const deploy = await contractIns.functions.makeGenerator(
+        name,
+        symbol,
+        startTime,
+        endTime,
+        ticketfees,
+        maxTickets,
+        address2
+      );
       const reciept = deploy.wait();
       if (reciept.status == true) {
         console.log("Success", reciept);
