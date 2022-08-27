@@ -38,7 +38,7 @@ const WalletConnect: FC = () => {
 
   // const checkUserExists = async () => {
   //   try {
-  //     const response = await userActions.isUserExists(auth?.address!!);
+  //     const response = await userActions.isUserExists(auth?.address!!);removed merkleproof
   //     const tmpUser = response.data.data;
 
   //     setCurrentUser(tmpUser);
@@ -118,7 +118,8 @@ const WalletConnect: FC = () => {
   }, []);
 
   const metaMaskConnect = async () => {
-    if (isWalletConnected || isValidNetwork()) {
+    if (isWalletConnected && isValidNetwork()) {
+      console.log(auth);
       return;
     }
     // console.log("isWalletConnected", isWalletConnected);

@@ -1,6 +1,7 @@
 import { Footer, Header } from "@components/common";
 import Banner from "@components/common/Banner";
 import TicketCard from "@components/common/TicketCard";
+import SellTickets from "@components/SellTickets";
 import { AppConstant } from "constant/AppConstant";
 import type { NextPage } from "next";
 import Head from "next/head";
@@ -14,8 +15,7 @@ const Home: NextPage = () => {
         <meta name="description" content={AppConstant.meta.description} />
       </Head>
       <Header />
-      <Banner />
-      <TicketCard />
+      <SellTickets />
       <Footer />
     </Layout>
   );

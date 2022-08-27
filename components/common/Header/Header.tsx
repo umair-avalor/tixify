@@ -2,6 +2,7 @@ import { BrandLogo } from "@components/ui";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useState } from "react";
+import WalletConnect from "../WalletConnect";
 //import WalletConnect from "../WalletConnect";
 import s from "./Header.module.scss";
 import { MenuItems } from "./MenuItems";
@@ -23,7 +24,7 @@ const Header: FC<Props> = ({ hideMenu }) => {
   };
 
   return (
-    <div className={`${s.container} ${hideMenu ? s.hideMenu : ""}`}>
+    <div className={` ${s.container} ${hideMenu ? s.hideMenu : ""} boxed`}>
       <div className={s.menuWrapper}>
         <div
           className={`${s.hamburgerMenu} hamburger-menu ${
@@ -38,11 +39,12 @@ const Header: FC<Props> = ({ hideMenu }) => {
         <div className={s.logo}>
           <Link href="/">
             <a>
-              <Image
+              {/* <Image
                 src="/images/logo.svg"
                 alt="hidden whales logo"
                 layout="fill"
-              />
+              /> */}
+              TIXIFY
             </a>
           </Link>
         </div>
@@ -105,16 +107,16 @@ const Header: FC<Props> = ({ hideMenu }) => {
               </Link>
             </div> */}
           </div>
-          {/* 
-          <div className={`btn-primary ${s.walletbtn}`}>
+
+          {/* <div className={`btn-primary ${s.walletbtn}`}>
             <Link href="#">
               <a>Connect Wallet</a>
             </Link>
-          </div> 
+          </div> */}
 
           <div className={`btn-primary ${s.walletbtn}`}>
             <WalletConnect />
-          </div>*/}
+          </div>
 
           <div className="ml-md-3 ml-1">
             {/* <Image

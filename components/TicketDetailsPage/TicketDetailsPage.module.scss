@@ -1,0 +1,84 @@
+@import "/styles/variables.scss";
+
+.container {
+  padding: 2rem;
+
+  margin-top: 10rem;
+  padding-top: 4rem;
+
+  @media screen and (max-width: $mobileResolution) {
+    padding: 3.5rem 1rem;
+  }
+
+  .ticketimg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgWrapper {
+    width: 828px;
+    height: 400px;
+    position: relative;
+  }
+
+  .ticketDetailsCard {
+    background: #212121;
+    border-radius: 10px;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 3rem;
+    .topRow {
+      display: flex;
+      justify-content: space-between;
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 0;
+      }
+    }
+
+    .locationRow {
+      display: flex;
+      margin-top: 1rem;
+      .singleBlock {
+        display: flex;
+        align-items: center;
+        margin-right: 1.5rem;
+      }
+      .calender {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      .location {
+        position: relative;
+        width: 24px;
+        height: 40px;
+        display: inline-block;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+.ticketMetaData {
+  margin-top: 3rem;
+  display: flex;
+
+  .metaBlockSingle {
+    width: 250px;
+    // height: 70px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    padding: 7px;
+    margin-right: 2rem;
+  }
+}

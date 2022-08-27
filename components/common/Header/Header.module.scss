@@ -11,8 +11,9 @@ $ham-menu-res: 1024px;
   right: 0;
   top: 0;
   color: $primary;
-  padding: 1.5rem 3vw;
-  background-color: #141414;
+  // padding: 1.5rem 3vw;
+  padding-top: 1rem;
+  background-color: transparent;
   @media screen and (max-width: $mobileResolution) {
     display: flex;
     justify-content: space-between;
@@ -215,13 +216,8 @@ $ham-menu-res: 1024px;
 }
 
 .logo {
-  width: 135px;
-  height: 35px;
-  position: relative;
-  @media screen and (max-width: $mobileResolution) {
-    width: 100px;
-    height: 29px;
-  }
+  font-weight: 600;
+  font-size: 35px;
 }
 
 .socialWrapper {
