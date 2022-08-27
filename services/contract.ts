@@ -27,9 +27,10 @@ export const deployGenerator = async (
         maxTickets,
         address2
       );
-      const reciept = deploy.wait();
+      const reciept = await deploy.wait();
       if (reciept.status == true) {
         console.log("Success", reciept);
+        return reciept;
       } else {
         console.log("Failed", reciept);
       }
@@ -54,9 +55,10 @@ export const buyTicket = async (ticketimage: String, qrlink: String) => {
         ticketimage,
         qrlink
       );
-      const reciept = issue.wait();
+      const reciept = await issue.wait();
       if (reciept.status == true) {
         console.log("Success", reciept);
+        return reciept;
       } else {
         console.log("Failed", reciept);
       }

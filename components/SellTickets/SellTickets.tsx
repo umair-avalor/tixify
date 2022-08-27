@@ -13,6 +13,14 @@ import { FC, useEffect, useState } from "react";
 import s from "./SellTickets.module.scss";
 import axios from "axios";
 
+import {
+  deployGenerator,
+  getYourTicket,
+  buyTicket,
+} from "../../services/contract";
+import { useRecoilValue } from "recoil";
+import { authAtom } from "src/_state";
+
 /* eslint-disable no-template-curly-in-string */
 const validateMessages = {
   required: "${label} is required!",
@@ -28,6 +36,12 @@ const validateMessages = {
 const SellTickets: FC = () => {
   const [users, setUsers] = useState([]);
   const [loading, setloading] = useState(true);
+  const auth = useRecoilValue(authAtom);
+  const walletAddress = auth?.address;
+
+  // useEffect(() => {
+  //   deployTicket;
+  // }, []);
 
   const url = "http://localhost:5000/api/tickets/create";
   // const [auth, setAuth] = useRecoilState<any>(authAtom);
@@ -55,6 +69,26 @@ const SellTickets: FC = () => {
         notification.error({ message: error.response.data.message });
       });
   };
+
+  const sellTicketsFunc = async () => {
+    const deployTicket = await deployGenerator(
+      "NFT2",
+      "MATIC",
+      1661671212,
+      1661844012,
+      1,
+      20
+    );
+    console.log(deployTicket);
+  };
+
+  const fetchMyTickets = () => {
+    const deployTicket = buyTicket(
+      "https://drive.google.com/file/d/1rCN8zRzvaM_bRgAlcSeeyUn3qgO8jpVE/view?usp=sharing",
+      "https://drive.google.com/file/d/1rCN8zRzvaM_bRgAlcSeeyUn3qgO8jpVE/view?usp=sharing"
+    );
+  };
+
   return (
     <>
       <div className={`${s.container} boxed`}>
@@ -98,6 +132,20 @@ const SellTickets: FC = () => {
               </Button>
             </Form.Item>
           </Form>
+          <Link href="#">
+            <a>
+              <div className={`btn-primary`} onClick={sellTicketsFunc}>
+                Sell
+              </div>
+            </a>
+          </Link>
+          <Link href="#">
+            <a>
+              <div className={`btn-primary`} onClick={fetchMyTickets}>
+                Fetch my NFTs
+              </div>
+            </a>
+          </Link>
         </div>
       </div>
     </>
