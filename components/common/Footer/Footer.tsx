@@ -8,7 +8,7 @@ const Footer: FC = () => {
   return (
     <>
       <div className={`${s.container} boxed`}>
-        <div className="">
+        {/* <div className="">
           <div className="row">
             <div className="col-md-4">
               <div className={s.brandContainer}>
@@ -85,48 +85,6 @@ const Footer: FC = () => {
             <div className={`col-md-2 col-6 ${s.singleBlock}`}>
               <p className="w600">Social Media</p>
 
-              {/* <div className={s.socialWrapper}>
-                <Link href="#">
-                  <a className={s.links}>
-                    <Image
-                      alt="img"
-                      src="/images/icons/fb.svg"
-                      width={25}
-                      height={25}
-                    />
-                  </a>
-                </Link>
-                <Link href="#">
-                  <a className={s.links}>
-                    <Image
-                      alt="icon"
-                      src="/images/icons/insta.svg"
-                      width={25}
-                      height={25}
-                    />
-                  </a>
-                </Link>
-                <Link href="#">
-                  <a className={s.links}>
-                    <Image
-                      alt="icon"
-                      src="/images/icons/linkedin.svg"
-                      width={25}
-                      height={25}
-                    />
-                  </a>
-                </Link>
-                <Link href="#">
-                  <a className={s.links}>
-                    <Image
-                      alt="icon"
-                      src="/images/icons/twitter.svg"
-                      width={25}
-                      height={25}
-                    />
-                  </a>
-                </Link>
-              </div> */}
             </div>
           </div>
         </div>
@@ -140,6 +98,18 @@ const Footer: FC = () => {
           <Link href="#">
             <a className={s.links}>Terms of Service</a>
           </Link>
+        </div> */}
+        <div className="text-center f60">TIXIFY</div>
+        <br />
+        <div className="text-center f20">Built on</div>
+        <div className="d-flex justify-content-center">
+          <div className={s.polygon}>
+            <Image
+              src={"/images/polygon.png"}
+              alt="Polygon logo"
+              layout="fill"
+            />
+          </div>
         </div>
       </div>
     </>
