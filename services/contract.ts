@@ -50,6 +50,7 @@ export const buyTicket = async (ticketimage: String, qrlink: String) => {
     }
   }
 };
+
 export const getYourTicket = async () => {
   const abi = contract.ticketabi;
   const address = contract.ticket;

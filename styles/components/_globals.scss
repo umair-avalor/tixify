@@ -164,3 +164,20 @@ a {
     padding-right: 1rem;
   }
 }
+
+.ant-input,
+.ant-picker {
+  background: transparent;
+  border-radius: 10px;
+  min-height: 47px;
+  width: 100%;
+  color: #fff !important;
+}
+
+.ant-picker-input > input {
+  color: #fff;
+}
+
+.ant-picker-suffix {
+  color: #fff;
+}
