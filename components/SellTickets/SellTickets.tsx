@@ -17,6 +17,7 @@ import {
   deployGenerator,
   getYourTicket,
   buyTicket,
+  getLatestTicketSeller,
 } from "../../services/contract";
 import { useRecoilValue } from "recoil";
 import { authAtom } from "src/_state";
